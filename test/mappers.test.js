@@ -117,3 +117,11 @@ test("isRealChannel filters divider entries", async () => {
 test("parseId handles live ids", () => {
   assert.deepEqual(parseId("xc:l:98867"), { kind: "live", streamId: "98867" });
 });
+
+test("parseId rejects non-numeric ids and weird extensions (URL-injection hygiene)", () => {
+  assert.equal(parseId("xc:v:../../etc:mp4"), null);
+  assert.equal(parseId("xc:v:123:m p4"), null);
+  assert.equal(parseId("xc:v:123:toolongext"), null);
+  assert.equal(parseId("xc:l:12abc"), null);
+  assert.equal(parseId("xc:s:1;drop"), null);
+});

@@ -191,7 +191,9 @@ export function createApp({ xtream, config, cinemeta = createCinemetaClient(), l
   app.use((req, res) => res.status(404).json({ err: "not found" }));
   // eslint-disable-next-line no-unused-vars
   app.use((err, req, res, next) => {
-    console.error(`[upstream] ${req.method} ${req.path}: ${err.message}`);
+    // never write the secret path segment into logs
+    const path = req.path.split(config.secret).join("[secret]");
+    console.error(`[upstream] ${req.method} ${path}: ${err.message}`);
     res.status(502).json({ err: "upstream" });
   });
 

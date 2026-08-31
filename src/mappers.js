@@ -127,13 +127,17 @@ export function isRealChannel(item) {
   return Boolean(name) && !/[#=]{3,}/.test(name);
 }
 
+// Ids and extensions end up interpolated into panel URLs — keep them strict.
+const NUMERIC = /^\d{1,12}$/;
+const EXT = /^[a-z0-9]{1,6}$/i;
+
 export function parseId(id) {
   if (typeof id !== "string") return null;
   const parts = id.split(":");
   if (parts[0] !== "xc") return null;
-  if (parts[1] === "v" && parts[2] && parts[3]) return { kind: "movie", streamId: parts[2], ext: parts[3] };
-  if (parts[1] === "s" && parts[2]) return { kind: "series", seriesId: parts[2] };
-  if (parts[1] === "e" && parts[2] && parts[3]) return { kind: "episode", episodeId: parts[2], ext: parts[3] };
-  if (parts[1] === "l" && parts[2]) return { kind: "live", streamId: parts[2] };
+  if (parts[1] === "v" && NUMERIC.test(parts[2]) && EXT.test(parts[3])) return { kind: "movie", streamId: parts[2], ext: parts[3] };
+  if (parts[1] === "s" && NUMERIC.test(parts[2])) return { kind: "series", seriesId: parts[2] };
+  if (parts[1] === "e" && NUMERIC.test(parts[2]) && EXT.test(parts[3])) return { kind: "episode", episodeId: parts[2], ext: parts[3] };
+  if (parts[1] === "l" && NUMERIC.test(parts[2])) return { kind: "live", streamId: parts[2] };
   return null;
 }
