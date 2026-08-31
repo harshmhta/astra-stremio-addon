@@ -1,0 +1,21 @@
+[Unit]
+Description=Stremio Xtream VOD addon
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=stremio
+WorkingDirectory=/opt/stremio-xtream
+EnvironmentFile=/opt/stremio-xtream/.env
+ExecStart=/usr/bin/node --max-old-space-size=350 src/index.js
+Restart=always
+RestartSec=3
+MemoryHigh=300M
+MemoryMax=420M
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
