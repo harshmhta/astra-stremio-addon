@@ -54,7 +54,36 @@ JSON, it works. You can install that URL in Stremio Desktop on the same
 machine right away. For phones, TVs, and Stremio Web you need HTTPS — so
 put it on a server:
 
-## Deploy to a server (DigitalOcean example, ~15 minutes)
+## Deploy to Heroku (easiest, ~5 minutes)
+
+Heroku gives you HTTPS, restarts, and deploys out of the box — nothing to
+administer. A Basic dyno is ~$7/mo (Eco is $5/mo but sleeps after 30 min
+idle, which makes Stremio's first request after a break slow or time out).
+
+**One click:**
+
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/harshmhta/astra-stremio-addon)
+
+Fill in your panel URL, username, and password on the form (the addon
+secret is generated for you), hit *Deploy app*, then read `ADDON_SECRET`
+from the app's *Settings → Config Vars*. Your addon URL is:
+
+```
+https://<your-app-name>.herokuapp.com/<ADDON_SECRET>/manifest.json
+```
+
+**Or from the CLI:**
+
+```bash
+heroku create my-astra
+heroku config:set XC_BASE_URL=http://panel.example.com:8080 XC_USERNAME=... XC_PASSWORD=... ADDON_SECRET=$(openssl rand -hex 12)
+git push heroku main
+heroku config:get ADDON_SECRET   # → goes into the URL above
+```
+
+Update later with `git pull && git push heroku main`.
+
+## Deploy to your own VPS (DigitalOcean example, ~15 minutes)
 
 Any Ubuntu 24.04 VPS works the same way; DigitalOcean's $4/mo droplet
 (512 MB) is more than enough.
@@ -108,7 +137,8 @@ Done. The service restarts itself on crashes and comes back on reboot.
 | `XC_PASSWORD` | ✅ | Panel password |
 | `ADDON_SECRET` | ✅ | Random string in your addon URL — the only lock on your addon. `openssl rand -hex 12` |
 | `ADDON_NAME` | | Name shown in Stremio (default `Astra`) |
-| `PORT` | | Listen port (default `7000`) |
+| `PORT` | | Listen port (default `7000`; Heroku sets it) |
+| `HOST` | | Bind address (default `127.0.0.1` behind a reverse proxy, `0.0.0.0` on Heroku) |
 
 ## Operating
 

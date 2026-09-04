@@ -1,0 +1,33 @@
+{
+  "name": "Astra",
+  "description": "Self-hosted Stremio addon for your Xtream Codes IPTV subscription",
+  "repository": "https://github.com/harshmhta/astra-stremio-addon",
+  "keywords": ["stremio", "iptv", "xtream", "addon"],
+  "stack": "heroku-24",
+  "env": {
+    "XC_BASE_URL": {
+      "description": "Your Xtream panel URL, e.g. http://panel.example.com:8080",
+      "required": true
+    },
+    "XC_USERNAME": {
+      "description": "Panel username",
+      "required": true
+    },
+    "XC_PASSWORD": {
+      "description": "Panel password",
+      "required": true
+    },
+    "ADDON_SECRET": {
+      "description": "Random string that becomes part of your addon URL — the only lock on it",
+      "generator": "secret"
+    },
+    "ADDON_NAME": {
+      "description": "Name shown in Stremio",
+      "value": "Astra",
+      "required": false
+    }
+  },
+  "formation": {
+    "web": { "quantity": 1, "size": "basic" }
+  }
+}

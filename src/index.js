@@ -25,4 +25,7 @@ const app = createApp({
 });
 
 const port = Number(process.env.PORT || 7000);
-app.listen(port, "127.0.0.1", () => console.log(`stremio-xtream addon listening on 127.0.0.1:${port}`));
+// Behind a reverse proxy (the VPS setup) bind loopback only; on a PaaS like
+// Heroku (which sets DYNO) the router needs to reach us on all interfaces.
+const host = process.env.HOST || (process.env.DYNO ? "0.0.0.0" : "127.0.0.1");
+app.listen(port, host, () => console.log(`astra listening on ${host}:${port}`));
