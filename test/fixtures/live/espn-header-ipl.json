@@ -1,0 +1,449 @@
+{
+ "sports": [
+  {
+   "id": "200",
+   "uid": "s:200",
+   "name": "Cricket",
+   "slug": "cricket",
+   "leagues": [
+    {
+     "id": "8048",
+     "uid": "s:200~l:8048",
+     "name": "Indian Premier League",
+     "shortName": "IPL",
+     "abbreviation": "IPL",
+     "slug": "8048",
+     "isTournament": true,
+     "events": [
+      {
+       "gamecastAvailable": false,
+       "playByPlayAvailable": false,
+       "commentaryAvailable": false,
+       "recent": false,
+       "id": "1535465",
+       "competitionId": "1535465",
+       "uid": "s:200~e:1535465~c:1535465",
+       "date": "2026-05-31T14:00:00Z",
+       "endDate": "2026-06-01T23:59:00Z",
+       "timeValid": true,
+       "name": "Royal Challengers Bengaluru v Gujarat Titans",
+       "shortName": "RCB v GT",
+       "description": "Final (N), Indian Premier League at Ahmedabad, May 31 2026",
+       "updatesOnly": false,
+       "title": "Final (D/N)",
+       "locationAndDate": "at Ahmedabad, May 31 2026",
+       "class": {
+        "internationalClassId": "0",
+        "generalClassId": "6",
+        "generalClassCard": "Twenty20",
+        "name": "Twenty20 matches",
+        "eventType": "T20"
+       },
+       "location": "Narendra Modi Stadium, Motera, Ahmedabad",
+       "season": 2026,
+       "seasonStartDate": "2026-03-28T00:00:00Z",
+       "preCommentaryAvailable": false,
+       "seasonEndDate": "2026-05-31T23:59:00Z",
+       "seasonType": "1",
+       "seasonTypeHasGroups": true,
+       "group": {
+        "groupId": "1",
+        "name": "Regular Season",
+        "abbreviation": "Indian Premier League",
+        "shortName": "INDIAN PREMIER LEAGUE"
+       },
+       "period": 2,
+       "clock": "0'",
+       "addedClock": 0,
+       "status": "post",
+       "summary": "Result",
+       "eventType": "T20",
+       "fullStatus": {
+        "clock": 0,
+        "addedClock": 0,
+        "displayClock": "0'",
+        "presentLocalTime": "",
+        "period": 2,
+        "dayNumber": 1,
+        "longSummary": "RCB won by 5 wickets (with 12 balls remaining)",
+        "summary": "RCB won by 5 wkts (12b rem)",
+        "type": {
+         "id": "1",
+         "description": "Result",
+         "detail": "Final",
+         "shortDetail": "Final",
+         "state": "post"
+        }
+       },
+       "notes": [
+        {
+         "text": "Royal Challengers Bengaluru won the 2026 Indian Premier League",
+         "type": "seriesnote"
+        },
+        {
+         "href": "https://www.espncricinfo.com/ci/engine/series/index.html?season=2026",
+         "text": "2026",
+         "type": "season"
+        },
+        {
+         "text": "31 May 2026 - night match (20-over match)",
+         "type": "matchdays"
+        },
+        {
+         "text": "19.30 start, First Session 19.30-21.00, Interval 21.00-21.15, Second Session 21.15-22.45",
+         "type": "hoursofplay"
+        },
+        {
+         "text": "Royal Challengers Bengaluru , elected to field first",
+         "type": "toss"
+        },
+        {
+         "text": "Ashish Pant and Ekanth",
+         "type": "livecommentator"
+        },
+        {
+         "text": "Chandan Duorah",
+         "type": "livescorer"
+        },
+        {
+         "dayNumber": "0",
+         "id": "756708",
+         "section": "1",
+         "text": "Gujarat Titans innings",
+         "type": "matchnote"
+        },
+        {
+         "dayNumber": "0",
+         "id": "756709",
+         "section": "1",
+         "text": "Powerplay 1: Overs 0.1 - 6.0 (Mandatory - 45 runs, 2 wickets)",
+         "type": "matchnote"
+        },
+        {
+         "dayNumber": "0",
+         "id": "756710",
+         "section": "1",
+         "text": "Over 0.4: Review by Gujarat Titans (Batting), Decision Challenged - Wicket, Umpire - Nitin Menon, Batter - B Sai Sudharsan (Upheld)",
+         "type": "matchnote"
+        },
+        {
+         "dayNumber": "0",
+         "id": "756711",
+         "section": "1",
+         "text": "Gujarat Titans Impact Player Subs: Prasidh Krishna, Glenn Phillips, Anuj Rawat, Kumar Kushagra, Sai Kishore.",
+         "type": "matchnote"
+        },
+        {
+         "dayNumber": "0",
+         "id": "756712",
+         "section": "1",
+         "text": "Royal Challengers Bengaluru Impact Player Subs: Venkatesh Iyer, Kanishk Chohan, Swapnil Singh, Abhinandan Singh, Jordan Cox.",
+         "type": "matchnote"
+        },
+        {
+         "dayNumber": "0",
+         "id": "756713",
+         "section": "1",
+         "text": "Gujarat Titans: 50 runs in 6.5 overs (41 balls), Extras 3",
+         "type": "matchnote"
+        },
+        {
+         "dayNumber": "0",
+         "id": "756714",
+         "section": "1",
+         "text": "Strategic Timeout: Gujarat Titans - 59/3 in 9.0 overs (JC Buttler 12, Washington Sundar 2)",
+         "type": "matchnote"
+        },
+        {
+         "dayNumber": "0",
+         "id": "756715",
+         "section": "1",
+         "text": "Royal Challengers Bengaluru Impact Player Sub: Venkatesh Iyer in for Jacob Duffy (Gujarat Titans innings, 13.6 ov)",
+         "type": "matchnote"
+        },
+        {
+         "dayNumber": "0",
+         "id": "756722",
+         "section": "2",
+         "text": "Gujarat Titans: 100 runs in 14.2 overs (86 balls), Extras 4",
+         "type": "matchnote"
+        },
+        {
+         "dayNumber": "0",
+         "id": "756724",
+         "section": "2",
+         "text": "Over 17.4: Review by Royal Challengers Bengaluru (Bowling), Decision Challenged - Wide, Umpire - KN Ananthapadmanabhan, Batter - Washington Sundar (Struck down)",
+         "type": "matchnote"
+        },
+        {
+         "dayNumber": "0",
+         "id": "756725",
+         "section": "2",
+         "text": "Gujarat Titans: 150 runs in 19.1 overs (115 balls), Extras 5",
+         "type": "matchnote"
+        },
+        {
+         "dayNumber": "0",
+         "id": "756727",
+         "section": "2",
+         "text": "Washington Sundar: 50 off 37 balls (5 x 4)",
+         "type": "matchnote"
+        },
+        {
+         "dayNumber": "0",
+         "id": "756728",
+         "section": "2",
+         "text": "Innings Break: Gujarat Titans - 155/8 in 20.0 overs (Washington Sundar 50, K Rabada 3)",
+         "type": "matchnote"
+        },
+        {
+         "dayNumber": "0",
+         "id": "756733",
+         "section": "3",
+         "text": "Royal Challengers Bengaluru innings",
+         "type": "matchnote"
+        },
+        {
+         "dayNumber": "0",
+         "id": "756734",
+         "section": "3",
+         "text": "Powerplay 1: Overs 0.1 - 6.0 (Mandatory - 70 runs, 2 wickets)",
+         "type": "matchnote"
+        },
+        {
+         "dayNumber": "0",
+         "id": "756736",
+         "section": "3",
+         "text": "Gujarat Titans Impact Player Sub: Prasidh Krishna in for Rahul Tewatia (Gujarat Titans innings, 19.6 ov)",
+         "type": "matchnote"
+        },
+        {
+         "dayNumber": "0",
+         "id": "756737",
+         "section": "3",
+         "text": "Royal Challengers Bengaluru: 50 runs in 3.3 overs (21 balls), Extras 1",
+         "type": "matchnote"
+        },
+        {
+         "dayNumber": "0",
+         "id": "756740",
+         "section": "3",
+         "text": "1st Wicket: 50 runs in 21 balls (VR Iyer 26, V Kohli 23, Ex 1)",
+         "type": "matchnote"
+        },
+        {
+         "dayNumber": "0",
+         "id": "756742",
+         "section": "3",
+         "text": "Strategic Timeout: Royal Challengers Bengaluru - 88/2 in 8.0 overs (V Kohli 38, RM Patidar 15)",
+         "type": "matchnote"
+        },
+        {
+         "dayNumber": "0",
+         "id": "756743",
+         "section": "3",
+         "text": "Royal Challengers Bengaluru: 100 runs in 9.5 overs (59 balls), Extras 2",
+         "type": "matchnote"
+        },
+        {
+         "dayNumber": "0",
+         "id": "756746",
+         "section": "3",
+         "text": "V Kohli: 50 off 25 balls (7 x 4, 2 x 6)",
+         "type": "matchnote"
+        },
+        {
+         "dayNumber": "0",
+         "id": "756749",
+         "section": "3",
+         "text": "Strategic Timeout: Royal Challengers Bengaluru - 126/4 in 13.0 overs (V Kohli 56, TH David 19)",
+         "type": "matchnote"
+        },
+        {
+         "dayNumber": "0",
+         "id": "756753",
+         "section": "3",
+         "text": "Over 13.6: Review by Gujarat Titans (Bowling), Decision Challenged - Wicket, Umpire - KN Ananthapadmanabhan, Batter - TH David (Upheld)",
+         "type": "matchnote"
+        },
+        {
+         "dayNumber": "0",
+         "id": "756754",
+         "section": "3",
+         "text": "Royal Challengers Bengaluru: 150 runs in 17.2 overs (104 balls), Extras 2",
+         "type": "matchnote"
+        },
+        {
+         "dayNumber": "0",
+         "id": "756755",
+         "section": "3",
+         "text": "Final was shifted to Ahmedabad from Bangalore and Royal Challengers Bengaluru played the game as designated home team.",
+         "type": "matchnote"
+        }
+       ],
+       "link": "https://www.espn.in/cricket/series/8048/scorecard/1535465/royal-challengers-bengaluru-vs-gujarat-titans-final-indian-premier-league-2026",
+       "links": [
+        {
+         "rel": [
+          "event",
+          "boxscore",
+          "scorecard",
+          "match",
+          "desktop"
+         ],
+         "href": "https://www.espn.in/cricket/series/8048/scorecard/1535465/royal-challengers-bengaluru-vs-gujarat-titans-final-indian-premier-league-2026",
+         "text": "Scorecard"
+        },
+        {
+         "rel": [
+          "event",
+          "recap",
+          "report",
+          "desktop"
+         ],
+         "href": "https://www.espn.in/cricket/series/8048/report/1535465/royal-challengers-bengaluru-vs-gujarat-titans-final-indian-premier-league-2026",
+         "text": "Report"
+        },
+        {
+         "rel": [
+          "event",
+          "boxscore",
+          "match",
+          "live",
+          "summary",
+          "desktop"
+         ],
+         "href": "https://www.espn.in/cricket/series/8048/game/1535465/royal-challengers-bengaluru-vs-gujarat-titans-final-indian-premier-league-2026",
+         "text": "Summary"
+        }
+       ],
+       "onWatch": false,
+       "competitors": [
+        {
+         "id": "335970",
+         "uid": "s:200~t:335970",
+         "type": "team",
+         "order": 2,
+         "homeAway": "home",
+         "winner": true,
+         "score": "161/5 (18/20 ov, target 156)",
+         "record": "",
+         "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/335970.png",
+         "links": [
+          {
+           "language": "en",
+           "rel": [
+            "clubhouse",
+            "desktop"
+           ],
+           "href": "https://www.espn.in/cricket/team/_/id/335970/royal-challengers-bengaluru",
+           "text": "Clubhouse",
+           "shortText": "Clubhouse",
+           "isExternal": false,
+           "isPremium": false
+          },
+          {
+           "language": "en",
+           "rel": [
+            "fixtures",
+            "desktop"
+           ],
+           "href": "https://www.espn.in/cricket/scores/team/335970/royal-challengers-bengaluru",
+           "text": "Fixtures",
+           "shortText": "Fixtures",
+           "isExternal": false,
+           "isPremium": false
+          },
+          {
+           "language": "en",
+           "rel": [
+            "videos",
+            "desktop"
+           ],
+           "href": "https://www.espncricinfo.com/ci/content/current/video_audio/index.html?object=335970",
+           "text": "Videos",
+           "shortText": "Videos",
+           "isExternal": false,
+           "isPremium": false
+          }
+         ],
+         "place": 1,
+         "displayName": "Royal Challengers Bengaluru",
+         "name": "RCB",
+         "abbreviation": "RCB",
+         "location": "India",
+         "color": "#f10920",
+         "isNational": false,
+         "competitionIdPrevious": "1535462"
+        },
+        {
+         "id": "1298769",
+         "uid": "s:200~t:1298769",
+         "type": "team",
+         "order": 1,
+         "homeAway": "away",
+         "winner": false,
+         "score": "155/8",
+         "record": "",
+         "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/1298769.png",
+         "links": [
+          {
+           "language": "en",
+           "rel": [
+            "clubhouse",
+            "desktop"
+           ],
+           "href": "https://www.espn.in/cricket/team/_/id/1298769/gujarat-titans",
+           "text": "Clubhouse",
+           "shortText": "Clubhouse",
+           "isExternal": false,
+           "isPremium": false
+          },
+          {
+           "language": "en",
+           "rel": [
+            "fixtures",
+            "desktop"
+           ],
+           "href": "https://www.espn.in/cricket/scores/team/1298769/gujarat-titans",
+           "text": "Fixtures",
+           "shortText": "Fixtures",
+           "isExternal": false,
+           "isPremium": false
+          },
+          {
+           "language": "en",
+           "rel": [
+            "videos",
+            "desktop"
+           ],
+           "href": "https://www.espncricinfo.com/ci/content/current/video_audio/index.html?object=1298769",
+           "text": "Videos",
+           "shortText": "Videos",
+           "isExternal": false,
+           "isPremium": false
+          }
+         ],
+         "place": 2,
+         "displayName": "Gujarat Titans",
+         "name": "GT",
+         "abbreviation": "GT",
+         "location": "India",
+         "color": "#334779",
+         "isNational": false,
+         "competitionIdPrevious": "1535464"
+        }
+       ],
+       "appLinks": []
+      }
+     ],
+     "smartdates": [
+      "2026-05-27T00:00:00Z",
+      "2026-05-29T00:00:00Z",
+      "2026-05-31T00:00:00Z"
+     ]
+    }
+   ]
+  }
+ ]
+}

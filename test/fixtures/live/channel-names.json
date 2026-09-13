@@ -1,0 +1,466 @@
+[
+ {
+  "name": "UK || SKY SPORTS NEWS",
+  "category": "SPORTS | SKY UK 4K",
+  "region": "UK",
+  "quality": "4k",
+  "network": "sky-sports-news",
+  "isEvent": false
+ },
+ {
+  "name": "UK || SKY SPORTS MAIN EVENT",
+  "category": "SPORTS | SKY UK 4K",
+  "region": "UK",
+  "quality": "4k",
+  "network": "sky-sports-main-event",
+  "isEvent": false
+ },
+ {
+  "name": "UK || SKY SPORTS PREMIER LEAGUE",
+  "category": "SPORTS | SKY UK 4K",
+  "region": "UK",
+  "quality": "4k",
+  "network": "sky-sports-premier-league",
+  "isEvent": false
+ },
+ {
+  "name": "UK || SKY SPORTS FOOTBALL",
+  "category": "SPORTS | SKY UK 4K",
+  "region": "UK",
+  "quality": "4k",
+  "network": "sky-sports-football",
+  "isEvent": false
+ },
+ {
+  "name": "UK: SKY SORTS F1 (4K)",
+  "category": "REAL 4K | 2160P",
+  "region": "UK",
+  "quality": "4k",
+  "network": "sky-sports-f1",
+  "isEvent": false
+ },
+ {
+  "name": "UK: SKY SPORTS 2 (4K)",
+  "category": "REAL 4K | 2160P",
+  "region": "UK",
+  "quality": "4k",
+  "network": null,
+  "isEvent": false
+ },
+ {
+  "name": "US: Olympic Channel 1 (UHD)",
+  "category": "SPORTS | SPORTS",
+  "region": "US",
+  "quality": "4k",
+  "network": null,
+  "isEvent": false
+ },
+ {
+  "name": "USA: Nickelodeon",
+  "category": "INDIA | KIDS",
+  "region": "US",
+  "quality": "sd",
+  "network": null,
+  "isEvent": false
+ },
+ {
+  "name": "US (ESPN+ 001) | the Memorial Tournament presented by Workday: Main Feed (Third Round) Jun 07 7:30AM ET (2026-06-07 07:30:00)",
+  "category": "SPORTS | ESPN+",
+  "region": "US",
+  "quality": "sd",
+  "network": "espn-plus",
+  "isEvent": true
+ },
+ {
+  "name": "US (ESPN+ 002) | PGA TOUR LIVE BetCast Presented by DraftKings (Third Round) Jun 07 7:30AM ET (2026-06-07 07:30:05)",
+  "category": "SPORTS | ESPN+",
+  "region": "US",
+  "quality": "sd",
+  "network": "espn-plus",
+  "isEvent": true
+ },
+ {
+  "name": "IN: DISNEY JUNIOR (MULTI AUDIO)",
+  "category": "INDIA | KIDS",
+  "region": "IN",
+  "quality": "sd",
+  "network": null,
+  "isEvent": false
+ },
+ {
+  "name": "IN: TEN 1 (4K).",
+  "category": "SPORTS | INDIA",
+  "region": "IN",
+  "quality": "4k",
+  "network": "sony-sports-ten-1",
+  "isEvent": false
+ },
+ {
+  "name": "CRIC || THE PAPARE \u1d34\u1d30",
+  "category": "SPORTS | CRICKET",
+  "region": "other",
+  "quality": "hd",
+  "network": null,
+  "isEvent": false
+ },
+ {
+  "name": "CRIC || STAR SPORTS 2 TAMIL \u2074\u1d4f",
+  "category": "SPORTS | CRICKET",
+  "region": "IN",
+  "quality": "4k",
+  "network": "star-sports-2",
+  "isEvent": false
+ },
+ {
+  "name": "CA-DAZN 1: WTA 500| Tokyo Open _ Day 3| Tue 21 Oct 9:30 PM",
+  "category": "CANADA | LIVE EVENT ONLY",
+  "region": "CA",
+  "quality": "sd",
+  "network": "dazn",
+  "isEvent": true
+ },
+ {
+  "name": "CA-DAZN 2: UEFA Youth League| Monaco U19 vs. Spurs U19| Wed 22 Oct 8:00 AM",
+  "category": "CANADA | LIVE EVENT ONLY",
+  "region": "CA",
+  "quality": "sd",
+  "network": "dazn",
+  "isEvent": true
+ },
+ {
+  "name": "CA (Carib) AFRO GLOBAL (E)",
+  "category": "AFRICA | CARIBBEAN",
+  "region": "CA",
+  "quality": "sd",
+  "network": null,
+  "isEvent": false
+ },
+ {
+  "name": "CA (Carib) CEEN (B)",
+  "category": "AFRICA | CARIBBEAN",
+  "region": "CA",
+  "quality": "sd",
+  "network": null,
+  "isEvent": false
+ },
+ {
+  "name": "DSTV: Super Sport OTT 7 (FHD)",
+  "category": "SPORTS | DSTV SUPER FHD",
+  "region": "ZA",
+  "quality": "fhd",
+  "network": null,
+  "isEvent": false
+ },
+ {
+  "name": "DSTV: Ginxe Sports TV (FHD)",
+  "category": "SPORTS | DSTV SUPER FHD",
+  "region": "ZA",
+  "quality": "fhd",
+  "network": null,
+  "isEvent": false
+ },
+ {
+  "name": "PT: RTP 1 HD",
+  "category": "EUROPE | PORTUGAL",
+  "region": "PT",
+  "quality": "hd",
+  "network": null,
+  "isEvent": false
+ },
+ {
+  "name": "PT: RTP 1 FHD",
+  "category": "EUROPE | PORTUGAL",
+  "region": "PT",
+  "quality": "fhd",
+  "network": null,
+  "isEvent": false
+ },
+ {
+  "name": "NO: TV2 SPORT 1 FHD",
+  "category": "EUROPE | NORWAY",
+  "region": "NO",
+  "quality": "fhd",
+  "network": null,
+  "isEvent": false
+ },
+ {
+  "name": "NO: TV2 SPORT 1 HD",
+  "category": "EUROPE | NORWAY",
+  "region": "NO",
+  "quality": "hd",
+  "network": null,
+  "isEvent": false
+ },
+ {
+  "name": "EX-YU PINK: VESTI",
+  "category": "EUROPE | EX-YU",
+  "region": "other",
+  "quality": "sd",
+  "network": null,
+  "isEvent": false
+ },
+ {
+  "name": "EX-YU PINK: EXTRA",
+  "category": "EUROPE | EX-YU",
+  "region": "other",
+  "quality": "sd",
+  "network": null,
+  "isEvent": false
+ },
+ {
+  "name": "Carib ESPN1 (P)",
+  "category": "AFRICA | CARIBBEAN",
+  "region": "other",
+  "quality": "sd",
+  "network": "espn",
+  "isEvent": false
+ },
+ {
+  "name": "Carib ESPN2 (P)",
+  "category": "AFRICA | CARIBBEAN",
+  "region": "other",
+  "quality": "sd",
+  "network": "espn2",
+  "isEvent": false
+ },
+ {
+  "name": "AU: Fox Sports 503",
+  "category": "SPORTS | FOX AUSTRALIA",
+  "region": "AU",
+  "quality": "sd",
+  "network": null,
+  "isEvent": false
+ },
+ {
+  "name": "AU: Fox Sports 504",
+  "category": "SPORTS | FOX AUSTRALIA",
+  "region": "AU",
+  "quality": "sd",
+  "network": null,
+  "isEvent": false
+ },
+ {
+  "name": "Sky Sport News-HD (Local) ''hevc h.265''",
+  "category": "EUROPE | GERMANY",
+  "region": "other",
+  "quality": "hd",
+  "network": null,
+  "isEvent": false
+ },
+ {
+  "name": "Sky Sport Mix -HD (Local) ''hevc h.265''",
+  "category": "EUROPE | GERMANY",
+  "region": "other",
+  "quality": "hd",
+  "network": null,
+  "isEvent": false
+ },
+ {
+  "name": "EPL-Arsenal",
+  "category": "EPL | LIVE ONLY",
+  "region": "other",
+  "quality": "sd",
+  "network": null,
+  "isEvent": true
+ },
+ {
+  "name": "EPL-AstonVilla",
+  "category": "EPL | LIVE ONLY",
+  "region": "other",
+  "quality": "sd",
+  "network": null,
+  "isEvent": true
+ },
+ {
+  "name": "BG: ################## Bulgaria Channels######################",
+  "category": "EUROPE | BULGARIA",
+  "region": "other",
+  "quality": "sd",
+  "network": null,
+  "isEvent": false
+ },
+ {
+  "name": "============ DENMARK (H.264) Local Streams ============",
+  "category": "EUROPE | DENMARK",
+  "region": "other",
+  "quality": "sd",
+  "network": null,
+  "isEvent": false
+ },
+ {
+  "name": "Carib NBA League Pass 7 (D)",
+  "category": "AFRICA | CARIBBEAN",
+  "region": "other",
+  "quality": "sd",
+  "network": null,
+  "isEvent": true
+ },
+ {
+  "name": "Carib NBA League Pass 6 (D)",
+  "category": "AFRICA | CARIBBEAN",
+  "region": "other",
+  "quality": "sd",
+  "network": null,
+  "isEvent": true
+ },
+ {
+  "name": "US (MLB) Washington Nationals (S)",
+  "category": "MLB | LIVE ONLY",
+  "region": "US",
+  "quality": "sd",
+  "network": null,
+  "isEvent": true
+ },
+ {
+  "name": "US (MLB) Toronto Blue Jays (S)",
+  "category": "MLB | LIVE ONLY",
+  "region": "US",
+  "quality": "sd",
+  "network": null,
+  "isEvent": true
+ },
+ {
+  "name": "US (ESPN+ 003) | 2026 WSL Championship Tour: Surf City El Salvador Pro Jun 07 8:30AM ET (2026-06-07 08:30:00)",
+  "category": "SPORTS | ESPN+",
+  "region": "US",
+  "quality": "sd",
+  "network": "espn-plus",
+  "isEvent": true
+ },
+ {
+  "name": "US (ESPN+ 004) | ACL Forth Worth Signature Open 2026 _ Pro Women`s_ Senior_ Junior Singles Final Bracket Jun 07 10:00AM ET (2026-06-07 10:00:00)",
+  "category": "SPORTS | ESPN+",
+  "region": "US",
+  "quality": "sd",
+  "network": "espn-plus",
+  "isEvent": true
+ },
+ {
+  "name": "(ID) (V+) beIN SPORTS",
+  "category": "ASIA | INDONESIA",
+  "region": "other",
+  "quality": "sd",
+  "network": "bein-sports",
+  "isEvent": false
+ },
+ {
+  "name": "(ID) (V+) beIN SPORTS 2",
+  "category": "ASIA | INDONESIA",
+  "region": "other",
+  "quality": "sd",
+  "network": "bein-sports-2",
+  "isEvent": false
+ },
+ {
+  "name": "IN: STAR SPORTS 1 (4K).",
+  "category": "SPORTS | INDIA",
+  "region": "IN",
+  "quality": "4k",
+  "network": "star-sports-1",
+  "isEvent": false
+ },
+ {
+  "name": "IN: STAR SPORTS 2 (4K).",
+  "category": "SPORTS | INDIA",
+  "region": "IN",
+  "quality": "4k",
+  "network": "star-sports-2",
+  "isEvent": false
+ },
+ {
+  "name": "CRIC || WILLOW SPORTS Cricbuzz \u1d34\u1d30",
+  "category": "SPORTS | CRICKET",
+  "region": "US",
+  "quality": "hd",
+  "network": "willow",
+  "isEvent": false
+ },
+ {
+  "name": "CRIC || WILLOW 2 \u1d34\u1d30",
+  "category": "SPORTS | CRICKET",
+  "region": "US",
+  "quality": "hd",
+  "network": "willow",
+  "isEvent": false
+ },
+ {
+  "name": "CRIC || TNT SPORTS 1 \u1da0\u1d34\u1d30",
+  "category": "SPORTS | CRICKET",
+  "region": "UK",
+  "quality": "fhd",
+  "network": "tnt-sports-1",
+  "isEvent": false
+ },
+ {
+  "name": "CRIC || TNT SPORTS 3 \u1da0\u1d34\u1d30",
+  "category": "SPORTS | CRICKET",
+  "region": "UK",
+  "quality": "fhd",
+  "network": "tnt-sports-3",
+  "isEvent": false
+ },
+ {
+  "name": "PH Premier Sports HD (C)",
+  "category": "ASIA | PHILIPPINES",
+  "region": "other",
+  "quality": "hd",
+  "network": null,
+  "isEvent": false
+ },
+ {
+  "name": "Premier Sports 1",
+  "category": "SPORTS | FOOTBALL",
+  "region": "UK",
+  "quality": "sd",
+  "network": "premier-sports-1",
+  "isEvent": false
+ },
+ {
+  "name": "RU: SONY HD",
+  "category": "EUROPE | RUSSIA",
+  "region": "other",
+  "quality": "hd",
+  "network": null,
+  "isEvent": false
+ },
+ {
+  "name": "RU: SONY Sci-fi HD",
+  "category": "EUROPE | RUSSIA",
+  "region": "other",
+  "quality": "hd",
+  "network": null,
+  "isEvent": false
+ },
+ {
+  "name": "BR: FOX Sports 1 HD",
+  "category": "SOUTH AMERICA | BRASIL",
+  "region": "other",
+  "quality": "hd",
+  "network": "fs1",
+  "isEvent": false
+ },
+ {
+  "name": "BR: FOX Sports 2 HD",
+  "category": "SOUTH AMERICA | BRASIL",
+  "region": "other",
+  "quality": "hd",
+  "network": "fs2",
+  "isEvent": false
+ },
+ {
+  "name": "Carib (FLOW) NFL Network (D)",
+  "category": "AFRICA | CARIBBEAN",
+  "region": "other",
+  "quality": "sd",
+  "network": "nfl-network",
+  "isEvent": false
+ },
+ {
+  "name": "CA NFL Network",
+  "category": "CANADA | TV",
+  "region": "CA",
+  "quality": "sd",
+  "network": "nfl-network",
+  "isEvent": false
+ }
+]
