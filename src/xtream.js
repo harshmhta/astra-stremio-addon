@@ -63,5 +63,6 @@ export function createXtreamClient({ baseUrl, username, password, fetchImpl = fe
     movieUrl: (streamId, ext) => `${base}/movie/${username}/${password}/${streamId}.${ext}`,
     episodeUrl: (episodeId, ext) => `${base}/series/${username}/${password}/${episodeId}.${ext}`,
     liveUrl: (streamId) => `${base}/live/${username}/${password}/${streamId}.ts`,
+    xmltvUrl: () => `${base}/xmltv.php?username=${username}&password=${password}`,
   };
 }

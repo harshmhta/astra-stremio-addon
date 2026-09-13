@@ -78,4 +78,5 @@ test("stream URL helpers", () => {
   const c = createXtreamClient({ ...cfg, fetchImpl: fakeFetch(() => []) });
   assert.equal(c.movieUrl(5, "mkv"), "http://x:8080/movie/U/P/5.mkv");
   assert.equal(c.episodeUrl(7, "mp4"), "http://x:8080/series/U/P/7.mp4");
+  assert.equal(c.xmltvUrl(), "http://x:8080/xmltv.php?username=U&password=P");
 });

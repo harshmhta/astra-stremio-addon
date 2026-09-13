@@ -12,11 +12,12 @@ import {
 import { buildCatalog, genreOptions } from "./catalog.js";
 import { createImdbMatcher, createCinemetaClient, parseCinemetaId } from "./imdb.js";
 import { createLogoResolver } from "./logos.js";
+import { createLiveRouter } from "./live/api.js";
 
 const MANIFEST_ID = "cc.harsh.xtream-vod";
 const MAX_SERIES_INFO_LOOKUPS = 3;
 
-export function createApp({ xtream, config, cinemeta = createCinemetaClient(), logos = createLogoResolver() }) {
+export function createApp({ xtream, config, cinemeta = createCinemetaClient(), logos = createLogoResolver(), live = null }) {
   const imdb = createImdbMatcher();
   const liveTv = config.liveTv !== false; // LIVE_TV=false hides the live catalog entirely
 
@@ -51,6 +52,10 @@ export function createApp({ xtream, config, cinemeta = createCinemetaClient(), l
 
   const secret = express.Router();
   app.use(`/${config.secret}`, secret);
+
+  // Live/Sports API for the Astra TV app — separate from the Stremio routes,
+  // never referenced by the manifest.
+  if (live && config.liveApi !== false) secret.use("/api/v1", createLiveRouter({ engine: live }));
 
   secret.get("/manifest.json", async (req, res, next) => {
     try {

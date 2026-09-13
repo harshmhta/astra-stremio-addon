@@ -1,6 +1,12 @@
 import { createXtreamClient } from "./xtream.js";
 import { createApp } from "./server.js";
 import { startKeepAlive } from "./keepalive.js";
+import { createEpg } from "./live/epg.js";
+import { createEspn } from "./live/fixtures/espn.js";
+import { createEspnHeader } from "./live/fixtures/espnHeader.js";
+import { createSportsDb } from "./live/fixtures/thesportsdb.js";
+import { createSportsEngine } from "./live/sports.js";
+import { teamsFromEnv } from "./live/taxonomy.js";
 
 const required = (name) => {
   const v = process.env[name];
@@ -17,12 +23,30 @@ const xtream = createXtreamClient({
   password: required("XC_PASSWORD"),
 });
 
+const off = (v) => /^(0|false|off|no)$/i.test(v || "");
+const fixturesOn = !off(process.env.SPORTS_FIXTURES);
+const live = off(process.env.LIVE_API)
+  ? null
+  : createSportsEngine({
+      xtream,
+      epg: createEpg({ url: xtream.xmltvUrl() }),
+      espn: fixturesOn ? createEspn() : { events: async () => [] },
+      espnHeader: fixturesOn ? createEspnHeader() : { events: async () => [] },
+      sportsDb: createSportsDb(),
+      config: {
+        teams: teamsFromEnv(process.env.MY_TEAMS),
+        regionOrder: (process.env.FEED_REGION_ORDER || "UK,US,IN,CA,other").split(",").map((s) => s.trim()).filter(Boolean),
+      },
+    });
+
 const app = createApp({
   xtream,
+  live,
   config: {
     secret: required("ADDON_SECRET"),
     addonName: process.env.ADDON_NAME || "Astra",
-    liveTv: !/^(0|false|off|no)$/i.test(process.env.LIVE_TV || ""),
+    liveTv: !off(process.env.LIVE_TV),
+    liveApi: live !== null,
   },
 });
 
