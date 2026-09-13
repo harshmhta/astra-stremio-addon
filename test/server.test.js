@@ -206,3 +206,31 @@ test("episode streams carry a bingeGroup for auto-next", async () => {
   const tt = await get(`/${SECRET}/stream/series/${encodeURIComponent("tt0000002:1:1")}.json`);
   assert.equal(tt.body.streams[0].behaviorHints.bingeGroup, "northstar-s11");
 });
+
+test("LIVE_TV=false removes the tv type, catalog, meta and streams", async () => {
+  const app = createApp({
+    xtream: fakeXtream,
+    cinemeta: fakeCinemeta,
+    logos: fakeLogos,
+    config: { secret: SECRET, addonName: "NO LIVE", liveTv: false },
+  });
+  const srv = app.listen(0);
+  await new Promise((r) => srv.once("listening", r));
+  const base = `http://127.0.0.1:${srv.address().port}`;
+  const j = async (p) => {
+    const res = await fetch(base + p);
+    return { status: res.status, body: await res.json() };
+  };
+  try {
+    const m = await j(`/${SECRET}/manifest.json`);
+    assert.deepEqual(m.body.types, ["movie", "series"]);
+    assert.deepEqual(m.body.catalogs.map((c) => c.id), ["xc-movies", "xc-series"]);
+    assert.deepEqual(m.body.resources.find((r) => r.name === "stream").types, ["movie", "series"]);
+    assert.equal((await j(`/${SECRET}/catalog/tv/xc-live.json`)).status, 404);
+    assert.equal((await j(`/${SECRET}/meta/tv/${encodeURIComponent("xc:l:98867")}.json`)).status, 404);
+    assert.equal((await j(`/${SECRET}/stream/tv/${encodeURIComponent("xc:l:98867")}.json`)).status, 404);
+    assert.equal((await j(`/${SECRET}/catalog/movie/xc-movies.json`)).status, 200, "VOD untouched");
+  } finally {
+    srv.close();
+  }
+});

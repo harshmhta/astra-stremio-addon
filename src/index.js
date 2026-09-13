@@ -21,6 +21,7 @@ const app = createApp({
   config: {
     secret: required("ADDON_SECRET"),
     addonName: process.env.ADDON_NAME || "Astra",
+    liveTv: !/^(0|false|off|no)$/i.test(process.env.LIVE_TV || ""),
   },
 });
 

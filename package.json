@@ -1,6 +1,6 @@
 {
   "name": "astra-stremio-addon",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Self-hosted Stremio addon for your Xtream Codes IPTV subscription",
   "private": true,
   "type": "module",

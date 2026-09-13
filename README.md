@@ -137,6 +137,7 @@ Done. The service restarts itself on crashes and comes back on reboot.
 | `XC_PASSWORD` | ✅ | Panel password |
 | `ADDON_SECRET` | ✅ | Random string in your addon URL — the only lock on your addon. `openssl rand -hex 12` |
 | `ADDON_NAME` | | Name shown in Stremio (default `Astra`) |
+| `LIVE_TV` | | Set to `false` to hide the Live TV catalog (movies + series only) |
 | `PORT` | | Listen port (default `7000`; Heroku sets it) |
 | `HOST` | | Bind address (default `127.0.0.1` behind a reverse proxy, `0.0.0.0` on Heroku) |
 

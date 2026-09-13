@@ -18,6 +18,7 @@ const MAX_SERIES_INFO_LOOKUPS = 3;
 
 export function createApp({ xtream, config, cinemeta = createCinemetaClient(), logos = createLogoResolver() }) {
   const imdb = createImdbMatcher();
+  const liveTv = config.liveTv !== false; // LIVE_TV=false hides the live catalog entirely
 
   // Live channels enriched with fallback logos + sorted logo-first, memoized
   // on the xtream list object (which only changes when its cache refreshes).
@@ -56,8 +57,9 @@ export function createApp({ xtream, config, cinemeta = createCinemetaClient(), l
       const [vodCats, seriesCats, liveCats] = await Promise.all([
         xtream.getVodCategories(),
         xtream.getSeriesCategories(),
-        xtream.getLiveCategories(),
+        liveTv ? xtream.getLiveCategories() : [],
       ]);
+      const types = liveTv ? ["movie", "series", "tv"] : ["movie", "series"];
       const catalogExtra = (cats) => [
         { name: "genre", options: genreOptions(cats) },
         { name: "search" },
@@ -65,19 +67,21 @@ export function createApp({ xtream, config, cinemeta = createCinemetaClient(), l
       ];
       res.json({
         id: MANIFEST_ID,
-        version: "1.3.0",
+        version: "1.4.0",
         name: config.addonName,
-        description: "Private VOD + live TV addon backed by an Xtream Codes IPTV subscription",
-        types: ["movie", "series", "tv"],
+        description: liveTv
+          ? "Private VOD + live TV addon backed by an Xtream Codes IPTV subscription"
+          : "Private VOD addon backed by an Xtream Codes IPTV subscription",
+        types,
         resources: [
           "catalog",
-          { name: "meta", types: ["movie", "series", "tv"], idPrefixes: ["xc:"] },
-          { name: "stream", types: ["movie", "series", "tv"], idPrefixes: ["xc:", "tt"] },
+          { name: "meta", types, idPrefixes: ["xc:"] },
+          { name: "stream", types, idPrefixes: ["xc:", "tt"] },
         ],
         catalogs: [
           { type: "movie", id: "xc-movies", name: "IPTV Movies", extra: catalogExtra(vodCats) },
           { type: "series", id: "xc-series", name: "IPTV Series", extra: catalogExtra(seriesCats) },
-          { type: "tv", id: "xc-live", name: "Live TV", extra: catalogExtra(liveCats) },
+          ...(liveTv ? [{ type: "tv", id: "xc-live", name: "Live TV", extra: catalogExtra(liveCats) }] : []),
         ],
         behaviorHints: { configurable: false },
       });
@@ -100,7 +104,7 @@ export function createApp({ xtream, config, cinemeta = createCinemetaClient(), l
         const [items, categories] = await Promise.all([xtream.getSeries(), xtream.getSeriesCategories()]);
         return res.json(buildCatalog({ items, categories, extra, toPreview: seriesToPreview }));
       }
-      if (type === "tv" && req.params.catalogId === "xc-live") {
+      if (liveTv && type === "tv" && req.params.catalogId === "xc-live") {
         const [items, categories] = await Promise.all([liveChannels(), xtream.getLiveCategories()]);
         return res.json(buildCatalog({ items, categories, extra, toPreview: liveToPreview }));
       }
@@ -124,7 +128,7 @@ export function createApp({ xtream, config, cinemeta = createCinemetaClient(), l
         const data = await xtream.getSeriesInfo(parsed.seriesId);
         return res.json({ meta: seriesInfoToMeta(parsed.seriesId, data.info, data.episodes) });
       }
-      if (parsed.kind === "live") {
+      if (parsed.kind === "live" && liveTv) {
         const [items, categories] = await Promise.all([liveChannels(), xtream.getLiveCategories()]);
         const item = items.find((it) => String(it.stream_id) === parsed.streamId);
         if (!item) return res.status(404).json({ err: "not found" });
@@ -179,7 +183,7 @@ export function createApp({ xtream, config, cinemeta = createCinemetaClient(), l
       const stream = (url, bingeGroup) => ({ streams: [toStream(url, "Direct from IPTV provider", bingeGroup)] });
       if (parsed?.kind === "movie") return res.json(stream(xtream.movieUrl(parsed.streamId, parsed.ext)));
       if (parsed?.kind === "episode") return res.json(stream(xtream.episodeUrl(parsed.episodeId, parsed.ext), "northstar-series"));
-      if (parsed?.kind === "live") return res.json(stream(xtream.liveUrl(parsed.streamId)));
+      if (parsed?.kind === "live" && liveTv) return res.json(stream(xtream.liveUrl(parsed.streamId)));
       const viaImdb = await imdbStreams(req.params.type, req.params.id);
       if (viaImdb) return res.json({ streams: viaImdb });
       res.status(404).json({ err: "not found" });

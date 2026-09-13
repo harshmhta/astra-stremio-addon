@@ -25,6 +25,11 @@
       "description": "Name shown in Stremio",
       "value": "Astra",
       "required": false
+    },
+    "LIVE_TV": {
+      "description": "Set to false to hide the Live TV catalog",
+      "value": "true",
+      "required": false
     }
   },
   "formation": {
