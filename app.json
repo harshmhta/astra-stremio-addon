@@ -30,6 +30,10 @@
       "description": "Set to false to hide the Live TV catalog",
       "value": "true",
       "required": false
+    },
+    "KEEPALIVE_URL": {
+      "description": "Optional: your app's /healthz URL, pinged every 20 min so an Eco dyno never sleeps",
+      "required": false
     }
   },
   "formation": {

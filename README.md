@@ -57,8 +57,10 @@ put it on a server:
 ## Deploy to Heroku (easiest, ~5 minutes)
 
 Heroku gives you HTTPS, restarts, and deploys out of the box — nothing to
-administer. A Basic dyno is ~$7/mo (Eco is $5/mo but sleeps after 30 min
-idle, which makes Stremio's first request after a break slow or time out).
+administer. A Basic dyno is ~$7/mo and never sleeps. The Eco plan is $5/mo
+for 1,000 dyno-hours but sleeps after 30 min idle — to run Astra on Eco,
+set `KEEPALIVE_URL` to your app's `/healthz` URL and it pings itself every
+20 minutes (a single always-on dyno uses ~744 of your 1,000 hours).
 
 **One click:**
 
@@ -138,6 +140,7 @@ Done. The service restarts itself on crashes and comes back on reboot.
 | `ADDON_SECRET` | ✅ | Random string in your addon URL — the only lock on your addon. `openssl rand -hex 12` |
 | `ADDON_NAME` | | Name shown in Stremio (default `Astra`) |
 | `LIVE_TV` | | Set to `false` to hide the Live TV catalog (movies + series only) |
+| `KEEPALIVE_URL` | | Public URL the app pings every 20 min to stay awake, e.g. `https://my-astra.herokuapp.com/healthz` (for Heroku Eco dynos) |
 | `PORT` | | Listen port (default `7000`; Heroku sets it) |
 | `HOST` | | Bind address (default `127.0.0.1` behind a reverse proxy, `0.0.0.0` on Heroku) |
 
