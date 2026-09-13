@@ -37,6 +37,9 @@ test("spot checks", () => {
   assert.equal(networkOf("UK: SKY SORTS F1 (4K)"), "sky-sports-f1", "tolerates the panel's typo");
   assert.equal(networkOf("US (ESPN+ 003) | 2026 WSL Championship Tour"), "espn-plus");
   assert.equal(networkOf("Sky Sport News-HD (Local)"), null, "singular 'Sky Sport' is not UK Sky Sports");
+  assert.equal(networkOf("UK: CBS Reality"), null, "US network alias under a UK prefix is rejected");
+  assert.equal(networkOf("US: CBS Sports Network"), "cbs-sports-network");
+  assert.equal(networkOf("Carib ESPN1 (P)"), "espn", "unranked prefixes keep the network (region handles trust)");
   assert.equal(isEventChannel("CA-DAZN 12: UEFA Champions League| Frankfurt vs. Liverpool| Wed 22 Oct 3:00 PM", "CANADA | LIVE EVENT ONLY"), true);
   assert.equal(isEventChannel("UK || SKY SPORTS MAIN EVENT", "SPORTS | UK SPORTS"), false);
 });

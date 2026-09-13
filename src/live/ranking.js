@@ -27,9 +27,14 @@ export function feedLabel(channel) {
       .map((w) => (/^(tnt|bbc|itv|nfl|nba|mlb|f1|fhd)$/i.test(w) ? w.toUpperCase() : w[0].toUpperCase() + w.slice(1)))
       .join(" ");
   }
+  const name = String(channel.name || "");
   // "CA-DAZN 3: Premier League| … " → "DAZN 3"
-  const first = String(channel.name || "").split("|")[0].replace(/^[A-Z]{2}[-\s]?/, "").replace(/:.*$/, "").trim();
-  return first || channel.name;
+  const provider = /^[A-Z]{2}-([A-Z][A-Za-z]+ \d+):/.exec(name);
+  if (provider) return provider[1];
+  // "DSTV: SuperSport 3 (FHD)" → "SuperSport 3"; "UK || SKY SPORTS PLUS" → "SKY SPORTS PLUS"
+  const stripped = name.replace(/^[A-Za-z]{2,5}\s*(?:[:|]{1,2}|-)\s*/, "");
+  const first = stripped.split("|")[0] || stripped;
+  return first.replace(/\([^)]*\)/g, " ").replace(/\s+/g, " ").trim() || name;
 }
 
 export function broadcastToNetworks(name) {
@@ -37,7 +42,7 @@ export function broadcastToNetworks(name) {
   return id ? [id] : [];
 }
 
-const toFeed = (c, kind) => ({ streamId: c.streamId, url: c.url, label: feedLabel(c), channelName: c.name, region: c.region, quality: c.quality, kind, logo: c.logo });
+const toFeed = (c, kind) => ({ streamId: c.streamId, url: c.url, label: feedLabel(c), channelName: c.name, region: c.region, quality: c.quality, kind, logo: c.logo, network: c.network });
 
 // Words that don't identify a club on their own ("City", "United", "Real"…).
 const GENERIC_WORDS = new Set(["city", "united", "town", "albion", "hove", "athletic", "rovers", "wanderers", "county", "real", "club", "state", "university", "sports", "team", "cricket", "fc", "the", "and", "nittany", "lions", "ducks", "hurricanes", "tigers", "bulldogs", "wildcats", "spurs"]);
@@ -80,8 +85,9 @@ export function attachFeeds(event, { channels, epg, regionOrder, now = Date.now(
   const competition = competitionById(event.competition);
   const prepared = prepare(channels, now);
   const wantedNetworks = new Set();
-  for (const ids of Object.values(competition?.networks || {})) for (const id of ids) wantedNetworks.add(id);
-  for (const b of event.broadcasts || []) for (const id of broadcastToNetworks(b)) wantedNetworks.add(id);
+  const priority = new Map(); // network id → position in the rights map (lower = better)
+  for (const ids of Object.values(competition?.networks || {})) ids.forEach((id, i) => { wantedNetworks.add(id); if (!priority.has(id)) priority.set(id, i); });
+  for (const b of event.broadcasts || []) for (const id of broadcastToNetworks(b)) { wantedNetworks.add(id); if (!priority.has(id)) priority.set(id, 0); }
 
   const windowStart = event.start - PRE_ROLL_MS;
   const windowEnd = event.start + durationMs(event.sport);
@@ -102,12 +108,17 @@ export function attachFeeds(event, { channels, epg, regionOrder, now = Date.now(
     }
   }
   for (const id of wantedNetworks) for (const c of prepared.byNetwork.get(id) || []) offer(c, "network");
-  return { ...event, feeds: rankFeeds([...best.values()], regionOrder) };
+  return { ...event, feeds: rankFeeds([...best.values()], regionOrder, priority) };
 }
 
-export function rankFeeds(feeds, regionOrder) {
+// Order: preferred region → evidence (epg > network > event) → rights-map
+// position → quality. One entry per (label, region, quality); max 12.
+export function rankFeeds(feeds, regionOrder, priority = new Map()) {
   const regionRank = (r) => { const i = regionOrder.indexOf(r); return i === -1 ? regionOrder.length : i; };
+  const prio = (f) => (f.network && priority.has(f.network) ? priority.get(f.network) : 99);
+  const seen = new Set();
   return [...feeds]
-    .sort((a, b) => KIND_RANK[a.kind] - KIND_RANK[b.kind] || regionRank(a.region) - regionRank(b.region) || QUALITY_RANK[a.quality] - QUALITY_RANK[b.quality])
+    .sort((a, b) => regionRank(a.region) - regionRank(b.region) || KIND_RANK[a.kind] - KIND_RANK[b.kind] || prio(a) - prio(b) || QUALITY_RANK[a.quality] - QUALITY_RANK[b.quality])
+    .filter((f) => { const k = `${f.label}|${f.region}|${f.quality}`; return seen.has(k) ? false : seen.add(k); })
     .slice(0, MAX_FEEDS);
 }

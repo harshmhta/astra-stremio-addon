@@ -31,6 +31,15 @@
       "value": "true",
       "required": false
     },
+    "MY_TEAMS": {
+      "description": "Optional: comma list of team ids for the Live/Sports API (see README)",
+      "required": false
+    },
+    "FEED_REGION_ORDER": {
+      "description": "Optional: preferred feed regions for the Live/Sports API, e.g. UK,US,IN,CA,other",
+      "value": "UK,US,IN,CA,other",
+      "required": false
+    },
     "KEEPALIVE_URL": {
       "description": "Optional: your app's /healthz URL, pinged every 20 min so an Eco dyno never sleeps",
       "required": false

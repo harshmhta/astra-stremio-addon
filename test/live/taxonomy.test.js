@@ -26,6 +26,7 @@ test("competition keywords + rights map", () => {
   assert.equal(matchCompetition("Test Cricket"), "cricket-international");
   assert.equal(matchCompetition("Live Indian Premier League: MI v CSK"), "ipl");
   assert.equal(matchCompetition("UEFA Champions League| Frankfurt vs. Liverpool"), "champions-league");
+  assert.equal(matchCompetition("AFC Champions League Al Ain vs Al-Nassr"), "afc-champions-league");
   assert.equal(matchCompetition("Solheim Cup Women's Golf"), null);
   assert.deepEqual(competitionById("premier-league").networks.UK, ["sky-sports-premier-league", "sky-sports-main-event", "tnt-sports-1"]);
   assert.deepEqual(competitionById("saudi-pro-league").networks.UK, []);

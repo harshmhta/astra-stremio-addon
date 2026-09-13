@@ -72,10 +72,15 @@ test("competition-only EPG titles count as network-level evidence, not team-leve
   assert.equal(e.feeds[0].kind, "network");
 });
 
-test("rankFeeds orders by evidence, region, quality and caps at 12", () => {
-  const mk = (i, kind, region, quality) => ({ streamId: String(i), url: "", label: "", channelName: "", region, quality, kind, logo: null });
+test("rankFeeds orders by region, then evidence, then rights-map priority, then quality; dedupes; caps at 12", () => {
+  const mk = (i, kind, region, quality, network = null) => ({ streamId: String(i), url: "", label: `L${i}`, channelName: "", region, quality, kind, logo: null, network });
   const feeds = [mk(1, "network", "US", "4k"), mk(2, "epg", "IN", "sd"), mk(3, "event", "UK", "4k"), mk(4, "network", "UK", "hd"), mk(5, "network", "UK", "4k")];
-  assert.deepEqual(rankFeeds(feeds, REGIONS).map((f) => f.streamId), ["2", "5", "4", "1", "3"]);
+  assert.deepEqual(rankFeeds(feeds, REGIONS).map((f) => f.streamId), ["5", "4", "3", "1", "2"]);
+  const prio = new Map([["sky-sports-premier-league", 0], ["sky-sports-main-event", 1]]);
+  const byPrio = [mk(6, "network", "UK", "4k", "sky-sports-main-event"), mk(7, "network", "UK", "sd", "sky-sports-premier-league")];
+  assert.deepEqual(rankFeeds(byPrio, REGIONS, prio).map((f) => f.streamId), ["7", "6"], "rights-map order beats quality");
+  const dupes = [mk(8, "network", "UK", "hd"), { ...mk(9, "network", "UK", "hd"), label: "L8" }];
+  assert.equal(rankFeeds(dupes, REGIONS).length, 1, "same label/region/quality collapses");
   const many = Array.from({ length: 20 }, (_, i) => mk(i, "network", "UK", "sd"));
   assert.equal(rankFeeds(many, REGIONS).length, 12);
 });
@@ -85,4 +90,6 @@ test("feedLabel humanizes network ids and falls back to a cleaned channel name",
   assert.equal(feedLabel({ network: "tnt-sports-1", name: "x" }), "TNT Sports 1");
   assert.equal(feedLabel({ network: "espn-plus", name: "x" }), "ESPN+");
   assert.equal(feedLabel({ network: null, name: "CA-DAZN 3: Premier League| Coventry City vs. Brighton| Sun 13 Sep 3:00 PM" }), "DAZN 3");
+  assert.equal(feedLabel({ network: null, name: "DSTV: SuperSport 3 (FHD)" }), "SuperSport 3");
+  assert.equal(feedLabel({ network: null, name: "UK || SKY SPORTS PLUS" }), "SKY SPORTS PLUS");
 });

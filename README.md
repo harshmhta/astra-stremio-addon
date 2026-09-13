@@ -141,8 +141,36 @@ Done. The service restarts itself on crashes and comes back on reboot.
 | `ADDON_NAME` | | Name shown in Stremio (default `Astra`) |
 | `LIVE_TV` | | Set to `false` to hide the Live TV catalog (movies + series only) |
 | `KEEPALIVE_URL` | | Public URL the app pings every 20 min to stay awake, e.g. `https://my-astra.herokuapp.com/healthz` (for Heroku Eco dynos) |
+| `LIVE_API` | | Set to `false` to disable the Live/Sports API below (default on) |
+| `SPORTS_FIXTURES` | | `off` disables the ESPN fixture/score sources (default on) |
+| `MY_TEAMS` | | Comma list of team ids for the Live/Sports API (`penn-state,real-madrid,liverpool,al-nassr,mumbai-indians,india-cricket`) |
+| `FEED_REGION_ORDER` | | Preferred feed regions, e.g. `UK,US,IN,CA,other` |
 | `PORT` | | Listen port (default `7000`; Heroku sets it) |
 | `HOST` | | Bind address (default `127.0.0.1` behind a reverse proxy, `0.0.0.0` on Heroku) |
+
+## Live/Sports API (for the Astra TV app)
+
+Separate from the Stremio routes and never referenced by the manifest, the
+server also exposes a sports-first JSON API under the same secret path,
+built for the [Astra TV](https://github.com/harshmhta/astra-tv) Android TV
+app. Fixtures, scores, clocks and team logos come from the internet (ESPN's
+public scoreboard, TheSportsDB for cricket teams); your panel only supplies
+the *feeds*, ranked by evidence — an EPG programme naming the teams beats a
+broadcaster-map guess, which beats a panel event channel whose name merely
+matches (those go stale).
+
+```
+GET /<secret>/api/v1/home?teams=liverpool,india-cricket   # everything Home needs
+GET /<secret>/api/v1/events?sport=soccer                  # live + next 7 days
+GET /<secret>/api/v1/events/<id>                          # one event, fresh feeds
+GET /<secret>/api/v1/channels?sport=cricket               # sports networks, UK first
+GET /<secret>/api/v1/teams                                # known team ids + badges
+GET /<secret>/api/v1/search?q=liverpool
+```
+
+Every feed carries a direct stream URL. ESPN's endpoint is unofficial: if
+it ever breaks, the API degrades to EPG-only "live now" rows rather than
+failing. Live TV in Stremio (`LIVE_TV`) is independent of this API.
 
 ## Operating
 

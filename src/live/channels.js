@@ -1,6 +1,19 @@
-import { networkOf, networkRegion } from "./networks.js";
+import { networkOf as rawNetworkOf, networkRegion } from "./networks.js";
 
-export { networkOf };
+const RANKED_REGIONS = new Set(["UK", "US", "IN", "CA", "AU", "ZA", "PT", "NO", "AR"]);
+
+// "UK: CBS Reality" is not CBS Sports: when the name carries an explicit
+// region prefix that conflicts with the network's home region, drop the network.
+export function networkOf(name) {
+  const id = rawNetworkOf(name);
+  if (!id) return null;
+  const home = networkRegion(id);
+  if (!home) return id;
+  for (const [region, re] of REGION_PREFIXES) {
+    if (re.test(name)) return RANKED_REGIONS.has(region) && region !== home ? null : id;
+  }
+  return id;
+}
 
 // Ordered prefix table: first match wins. Tested against the raw name.
 const REGION_PREFIXES = [

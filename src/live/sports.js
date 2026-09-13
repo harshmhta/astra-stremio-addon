@@ -36,7 +36,7 @@ function mergeInto(list, incoming) {
 export function createSportsEngine({ xtream, epg, espn, espnHeader, sportsDb, config = {}, now = Date.now, log = (m) => console.error(m) }) {
   const regionOrder = config.regionOrder || ["UK", "US", "IN", "CA", "other"];
   const defaultTeams = config.teams || TEAMS.map((t) => t.id);
-  const windowMs = (config.windowHours || 48) * H;
+  const windowMs = (config.windowHours || 168) * H; // 7 days: "next game" for My Teams, like Apple Sports
 
   let channelsSource = null;
   let channelIndex = null;

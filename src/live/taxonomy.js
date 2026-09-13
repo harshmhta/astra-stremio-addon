@@ -17,8 +17,13 @@ export const COMPETITIONS = [
     networks: { UK: ["premier-sports-1", "premier-sports-2"], US: ["espn", "espn2", "abc", "espn-plus"], IN: [] },
   },
   {
+    id: "afc-champions-league", sport: "soccer", name: "AFC Champions League",
+    espn: null, keywords: /afc champions league|acl elite/i, logo: null,
+    networks: { UK: [], US: [], IN: ["sony-sports-ten-1", "sony-sports-ten-2", "sony-sports-ten-3"] },
+  },
+  {
     id: "champions-league", sport: "soccer", name: "Champions League",
-    espn: { sport: "soccer", league: "uefa.champions" }, keywords: /champions league|\bucl\b/i, logo: espnLogo("soccer/500/2.png"),
+    espn: { sport: "soccer", league: "uefa.champions" }, keywords: /(?<!afc )champions league|\bucl\b/i, logo: espnLogo("soccer/500/2.png"),
     networks: { UK: ["tnt-sports-1", "tnt-sports-2", "tnt-sports-3", "tnt-sports-4"], US: ["cbs-sports-network", "cbs", "paramount"], IN: ["sony-sports-ten-1", "sony-sports-ten-2", "sony-sports-ten-3", "sony-sports-ten-5"] },
   },
   {
@@ -94,7 +99,7 @@ export const TEAMS = [
   { id: "penn-state", name: "Penn State", sport: "college-football", competitions: ["college-football"], aliases: [/\bpenn state\b/i, /nittany lions/i, /\bpsu\b/i], tsdbId: null, espnNames: ["Penn State Nittany Lions"], badge: teamLogo("ncaa/500/213.png") },
   { id: "real-madrid", name: "Real Madrid", sport: "soccer", competitions: ["la-liga", "champions-league", "copa-del-rey"], aliases: [/\breal madrid\b/i, /\br\.? ?madrid\b/i, /\brma\b/i], tsdbId: "133738", espnNames: ["Real Madrid"], badge: teamLogo("soccer/500/86.png") },
   { id: "liverpool", name: "Liverpool", sport: "soccer", competitions: ["premier-league", "champions-league", "fa-cup", "carabao-cup"], aliases: [/\bliverpool\b(?!\s*(?:women|ladies|fc women|u\d{2}|youth))/i, /\blfc\b/i], tsdbId: "133602", espnNames: ["Liverpool"], badge: teamLogo("soccer/500/364.png") },
-  { id: "al-nassr", name: "Al Nassr", sport: "soccer", competitions: ["saudi-pro-league"], aliases: [/\bal[\s-]?nassr\b/i], tsdbId: "136022", espnNames: ["Al Nassr"], badge: "https://r2.thesportsdb.com/images/media/team/badge/84yvqi1748524565.png" },
+  { id: "al-nassr", name: "Al Nassr", sport: "soccer", competitions: ["saudi-pro-league", "afc-champions-league"], aliases: [/\bal[\s-]?nassr\b/i], tsdbId: "136022", espnNames: ["Al Nassr"], badge: "https://r2.thesportsdb.com/images/media/team/badge/84yvqi1748524565.png" },
   { id: "mumbai-indians", name: "Mumbai Indians", sport: "cricket", competitions: ["ipl"], aliases: [/mumbai indians/i, /\bmi\b/i], contextOnly: true, tsdbId: "135795", espnNames: ["Mumbai Indians"], badge: "https://r2.thesportsdb.com/images/media/team/badge/l40j8p1487678631.png" },
   { id: "india-cricket", name: "India", sport: "cricket", competitions: ["cricket-international"], aliases: [/\bindia\b/i], contextOnly: true, tsdbId: "137143", espnNames: ["India"], badge: "https://r2.thesportsdb.com/images/media/team/badge/donl7g1646775159.png" },
 ];
