@@ -1,9 +1,11 @@
+import { httpGet } from "./httpGet.js";
+
 const LIST_TTL_MS = 12 * 3600 * 1000;
 const INFO_TTL_MS = 24 * 3600 * 1000;
 const INFO_MAX_ENTRIES = 500;
 const REQUEST_TIMEOUT_MS = 30_000;
 
-export function createXtreamClient({ baseUrl, username, password, fetchImpl = fetch, now = Date.now }) {
+export function createXtreamClient({ baseUrl, username, password, fetchImpl = httpGet, now = Date.now }) {
   const base = baseUrl.replace(/\/+$/, "");
 
   async function api(action, params = {}) {
